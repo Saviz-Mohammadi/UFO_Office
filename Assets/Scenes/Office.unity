@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 987411259}
   - component: {fileID: 987411257}
   - component: {fileID: 987411260}
+  - component: {fileID: 987411261}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -726,10 +727,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputController: {fileID: 987411259}
   _transform: {fileID: 987411256}
+  _moveDirection: {x: 0, y: 0, z: 0}
   _speed: 1
   _collisionIsEnabled: 1
   _collisionHeight: 2
   _collisionRadius: 1
+  _gizmosIsEnabled: 0
+  _gizmosColorActual: {r: 0, g: 1, b: 0, a: 1}
+  _gizmosColorPredicted: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &987411258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,6 +899,19 @@ MonoBehaviour:
   _sensitivityY: 1
   _verticalRotationLimit: 85
   _verticalRotation: 0
+--- !u!114 &987411261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987411255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49888e8582cdb332ac5d51b59f51318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionRange: 2
 --- !u!1 &1463010312
 GameObject:
   m_ObjectHideFlags: 0

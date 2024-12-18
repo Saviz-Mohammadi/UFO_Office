@@ -3,19 +3,22 @@ using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour {
     
+    #region Fields
     [Header("Dependencies")]
-    [Tooltip("Required for obtaining input for movement.")]
+    [Tooltip("Required for obtaining input.")]
     [SerializeField] private PlayerInput _playerInput = null;
     
-    [Header("Fields (Read-Only) - Movement")]
-    [Tooltip("Shows the movement vector.")]
-    [SerializeField] private Vector2 _inputMovementVector = new Vector2(0.0f, 0.0f);
-
-    [Header("Fields (Read-Only) - Rotation")]
-    [Tooltip("Shows the Rotation vector.")]
-    [SerializeField] private Vector2 _inputRotationVector = new Vector2(0.0f, 0.0f);
     
+    
+    [Header("Fields (Read-Only)")]
+    [Tooltip("Represents the movement vector obtained based on input received.")]
+    [SerializeField] private Vector2 _inputMovementVector = Vector2.zero;
+    
+    [Tooltip("Represents the rotation vector obtained based on input received.")]
+    [SerializeField] private Vector2 _inputRotationVector = Vector2.zero;
+    #endregion
 
+    
     #region MovementInput
     public void OnMoved(InputAction.CallbackContext context) {
         
@@ -38,8 +41,8 @@ public class InputController : MonoBehaviour {
     }
     #endregion
 
+    
     #region RotationInput
-
     public void OnRotated(InputAction.CallbackContext context) {
         
         _inputRotationVector = context.ReadValue<Vector2>().normalized;
@@ -59,6 +62,5 @@ public class InputController : MonoBehaviour {
         
         return (_inputRotationVector.y);
     }
-    
     #endregion
 }
