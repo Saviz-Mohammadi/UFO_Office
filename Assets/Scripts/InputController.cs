@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour {
@@ -18,6 +19,11 @@ public class InputController : MonoBehaviour {
     [SerializeField] private Vector2 _inputRotationVector = Vector2.zero;
     #endregion
 
+
+    #region CustomEvents
+    public UnityEvent onInteraction;
+    #endregion
+    
     
     #region MovementInput
     public void OnMoved(InputAction.CallbackContext context) {
@@ -62,5 +68,12 @@ public class InputController : MonoBehaviour {
         
         return (_inputRotationVector.y);
     }
+    #endregion
+
+    #region Interaction
+    public void OnInteracted(InputAction.CallbackContext context) {
+        
+        onInteraction?.Invoke();
+    } 
     #endregion
 }

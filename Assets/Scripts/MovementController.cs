@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour {
     [Tooltip("The selected 'Transform' placed in this field will be the targeted for movement.")]
     [SerializeField] private Transform _transform = null;
 
+    [SerializeField] private Transform _transformCamera = null;
     
     
     [Header("Fields (Read-Only)")]
@@ -106,6 +107,7 @@ public class MovementController : MonoBehaviour {
     private void MovePlayer() {
         
         _transform.position += _moveDirection * Time.deltaTime * _speed;
+        _transformCamera.position += _moveDirection * Time.deltaTime * _speed;
     }
     #endregion
 
