@@ -12,8 +12,8 @@ public class CubeInteractable : MonoBehaviour, IInteractable {
         return ("My name is: " + gameObject.name);
     }
 
-    public Transform ObtainTransform() {
+    public GameObject ObtainGameObject() {
         
-        return (transform);
+        return (gameObject);
     }
 }

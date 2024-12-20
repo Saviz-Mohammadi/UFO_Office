@@ -2,42 +2,37 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class InteractionUI : MonoBehaviour
-{
-    #region Fields
+public class InteractionUI : MonoBehaviour {
+
     [Header("Dependencies")]
     [Tooltip("Required for interacting with UI elements.")]
     [SerializeField] private UIDocument _uiDocument = null;
-    
-    [Tooltip("Required for responding to interactions.")]
-    [SerializeField] private InteractionController _interactionController = null;
-    
     
     
     [Header("Fields (Read-only)")]
     [Tooltip("Represents the 'Label' element responsible for displaying the interaction message.")]
     [SerializeField] private Label _labelInteractionMessage = null;
-    #endregion
 
     
-    #region Unity Events
     private void OnEnable() {
         
         _labelInteractionMessage = _uiDocument.rootVisualElement.Q<Label>("InteractionLabel");
+        
         _labelInteractionMessage.text = "";
     }
-    #endregion
 
-    public void OnInteractableFound() {
+    // Called on 'OnInteractableDiscovered' Unity-Event of 'InteractionController' component:
+    public void OnInteractableDiscovered(InteractionController interactionController) {
+        
+        _labelInteractionMessage.text = interactionController.GetInteractable().ObtainInteractionText();
         
         ShowUI();
-        _labelInteractionMessage.text = _interactionController.GetInteractable().ObtainInteractionText();
     }
 
-    public void OnInteractableLost() {
+    // Called on 'OnInteractableDiscarded' Unity-Event of 'InteractionController' component:
+    public void OnInteractableDiscarded(InteractionController interactionController) {
         
         HideUI();
-        //_labelInteractionMessage.text = _interactionController.GetInteractable().ObtainInteractionText();
     }
 
     private void ShowUI() {
