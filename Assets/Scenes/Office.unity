@@ -550,6 +550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2cfc1d68d580e2b9440fb8b55212b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 383190608}
+  _materialDiscovered: {fileID: 2100000, guid: 25a4e35108f4c1dacb8455f05ae7e0d1, type: 2}
+  _materialDiscarded: {fileID: 2100000, guid: d6b74aadccf1a9514804f1d82a8764de, type: 2}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +875,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2cfc1d68d580e2b9440fb8b55212b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 937106324}
+  _materialDiscovered: {fileID: 2100000, guid: d6b74aadccf1a9514804f1d82a8764de, type: 2}
+  _materialDiscarded: {fileID: 2100000, guid: 25a4e35108f4c1dacb8455f05ae7e0d1, type: 2}
 --- !u!1 &987411255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,10 +1094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49888e8582cdb332ac5d51b59f51318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 987411256}
+  _transform: {fileID: 330585546}
   _gizmosIsEnabled: 1
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
-  _interactionRange: 2
+  _interactionRange: 5
   OnInteractableDiscovered:
     m_PersistentCalls:
       m_Calls:
@@ -1107,11 +1113,59 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 383190611}
+        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
+        m_MethodName: OnInteractableDiscovered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 937106327}
+        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
+        m_MethodName: OnInteractableDiscovered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractableDiscarded:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1135519246}
         m_TargetAssemblyTypeName: InteractionUI, Assembly-CSharp
+        m_MethodName: OnInteractableDiscarded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 383190611}
+        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
+        m_MethodName: OnInteractableDiscarded
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 937106327}
+        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
         m_MethodName: OnInteractableDiscarded
         m_Mode: 0
         m_Arguments:

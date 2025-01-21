@@ -13,8 +13,10 @@ public class InteractionController : MonoBehaviour {
     
     // Used to store the most recent interactable object:
     private IInteractable _foundInteractable = null;
-    
-    
+
+    public IInteractable FoundInteractable => _foundInteractable;
+
+
     [Header("Fields (Customizable)")]
     [Tooltip("Controls the 'Enabled' state of the Gizmos.")]
     [SerializeField] private bool _gizmosIsEnabled = true;
@@ -24,7 +26,7 @@ public class InteractionController : MonoBehaviour {
     
     [Space(10)]
     [Tooltip("Controls the range within which the player can detect and interact with an interactable object. (Also used for drawing the Gizmos)")]
-    [SerializeField] private float _interactionRange = 3.0f;
+    [SerializeField] private float _interactionRange = 5.0f;
 
     
     
@@ -40,7 +42,7 @@ public class InteractionController : MonoBehaviour {
     private void Update() {
         
         // Continuously scan the environment for new interactable objects:
-        _foundInteractable = ObtainInteractableObjects();
+        _foundInteractable = ObtainInteractableObject();
         
         // Invoke Unity events and allow other components to know what happened:
         if (_foundInteractable != null) {
@@ -56,13 +58,12 @@ public class InteractionController : MonoBehaviour {
     private void OnDrawGizmos() {
 
         if (!_gizmosIsEnabled) {
-            
             return;
         }
         
         Gizmos.color = _gizmosColor;
         
-        Gizmos.DrawWireSphere(_transform.position, _interactionRange);
+        Gizmos.DrawRay(_transform.position, _transform.forward * _interactionRange);
     }
     
     // Called on 'Interacted' Unity-Event of 'Player Input' component:
@@ -82,41 +83,20 @@ public class InteractionController : MonoBehaviour {
         return (_foundInteractable);
     }
     
-    private IInteractable ObtainInteractableObjects() {
+    private IInteractable ObtainInteractableObject() {
+        
+        bool success = Physics.Raycast(_transform.position, _transform.forward, out RaycastHit hit, _interactionRange);
 
-        List<IInteractable> interactables = new List<IInteractable>();
+        if (!success) {
+            return (null);
+        }
         
-        Collider[] colliders = Physics.OverlapSphere(_transform.position, _interactionRange);
-        
-        foreach (Collider collider in colliders) {
+        hit.collider.TryGetComponent(out IInteractable interactable);
             
-            if (collider.TryGetComponent(out IInteractable interactable)) {
-                
-                interactables.Add(interactable);
-            }
+        if (interactable == null) {
+            return (null);
         }
-
-        IInteractable existingInteractable = null;
-        
-        // Check which interactable object is closer to player:
-        foreach (IInteractable interactable in interactables) {
-
-            if (existingInteractable == null) {
-                
-                existingInteractable = interactable;
-            }
-
-            else {
-                float newInteractableDistance = Vector3.Distance(_transform.position, interactable.ObtainGameObject().transform.position);
-                float existingInteractableDistance = Vector3.Distance(_transform.position, existingInteractable.ObtainGameObject().transform.position);
-
-                if (newInteractableDistance < existingInteractableDistance) {
-                    
-                    existingInteractable = interactable;
-                }
-            }
-        }
-        
-        return (existingInteractable);
+            
+        return (interactable);
     }
 }
