@@ -1126,6 +1126,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5d1dca6f-2291-4327-9115-393788761ddd
     m_ActionName: 'Player/Grab[/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 987411266}
+        m_TargetAssemblyTypeName: GrabController, Assembly-CSharp
+        m_MethodName: OnDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 658dff04-2946-4fb2-9cc5-25629b8131c1
+    m_ActionName: 'Player/Drop[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 987411266}
+        m_TargetAssemblyTypeName: GrabController, Assembly-CSharp
+        m_MethodName: OnPlace
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a7077c64-54b7-430f-9d0c-33f2a07f7e07
+    m_ActionName: 'Player/Place[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1325,6 +1357,7 @@ MonoBehaviour:
   _gizmosIsEnabled: 1
   _gizmosColor: {r: 0, g: 1, b: 0, a: 1}
   _interactionRange: 5
+  _dropRange: 2
   OnInteractableDiscovered:
     m_PersistentCalls:
       m_Calls: []
@@ -1546,7 +1579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42608d18c0ea15b69b5c734a5edcb632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1647562617}
+  _rigidbody: {fileID: 1647562617}
+  _renderer: {fileID: 1647562614}
 --- !u!65 &1647562613
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,29 +1,30 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour, IGrabbable
-{
-    [SerializeField] private Rigidbody rb;
-    private Transform target = null;
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Renderer))]
+public class Item : MonoBehaviour, IGrabbable {
+    [Header("Dependencies")]
+    [Tooltip("The 'Rigidbody' component of the item. Used for physical manipulations.")]
+    [SerializeField] private Rigidbody _rigidbody;
+    
+    [Tooltip("The 'Renderer' component of the item. Used for rendering a ghost replicate.")]
+    [SerializeField] private Renderer _renderer;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (target != null) {
-            rb.MovePosition(target.position);
-        }
+    public bool IsGrabbed { get; set; }
+
+    public Transform GetTransform() {
+        return (this.transform);
     }
 
-    public void Grab(Transform t) {
-        
-        rb.isKinematic = true;
-        target = t;
+    public Rigidbody GetRigidbody() {
+        return (this._rigidbody);
     }
 
-    // Rename this to be placed
-    public void Drop(Transform t) {
-        
-        target = null;
-        rb.MovePosition(t.position);
-        rb.isKinematic = false;
+    public Renderer GetRenderer() {
+        return (this._renderer);
+    }
+
+    public GameObject GetGhost() {
+        throw new System.NotImplementedException();
     }
 }
