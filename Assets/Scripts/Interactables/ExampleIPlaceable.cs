@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class Table : MonoBehaviour, IPlaceableLocation
+public class ExampleIPlaceable : MonoBehaviour, IPlaceableLocation
 {
     [SerializeField] private Transform _container;
-    
+
     public bool IsOccupied { get; set; }
-    
-    public Transform GetTransform() {
+
+    public Transform GetContainerTransform() {
         return (_container);
     }
 

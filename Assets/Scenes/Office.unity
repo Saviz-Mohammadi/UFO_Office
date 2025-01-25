@@ -237,13 +237,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 260841198}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &260841198
 Transform:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -533,7 +533,7 @@ Transform:
   m_GameObject: {fileID: 383190606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.29, y: 1.9, z: 7.61}
+  m_LocalPosition: {x: 0.85, y: 1.9, z: 10.13}
   m_LocalScale: {x: 9.989982, y: 7.17, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 383190608}
-  _materialDiscovered: {fileID: 2100000, guid: 25a4e35108f4c1dacb8455f05ae7e0d1, type: 2}
+  _materialDiscovered: {fileID: 2100000, guid: e31cdc0e702938092bc09c192fabea95, type: 2}
   _materialDiscarded: {fileID: 2100000, guid: d6b74aadccf1a9514804f1d82a8764de, type: 2}
 --- !u!1 &410087039
 GameObject:
@@ -737,6 +737,92 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1703312160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &678533601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 678533602}
+  - component: {fileID: 678533605}
+  - component: {fileID: 678533604}
+  m_Layer: 0
+  m_Name: Ghost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &678533602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678533601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.88, y: 0.94, z: 1.69}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &678533604
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678533601}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f17035fcea8d4479aa145f2795578928, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &678533605
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678533601}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 937106324}
-  _materialDiscovered: {fileID: 2100000, guid: d6b74aadccf1a9514804f1d82a8764de, type: 2}
+  _materialDiscovered: {fileID: 2100000, guid: e31cdc0e702938092bc09c192fabea95, type: 2}
   _materialDiscarded: {fileID: 2100000, guid: 25a4e35108f4c1dacb8455f05ae7e0d1, type: 2}
 --- !u!1 &987411255
 GameObject:
@@ -923,10 +1009,10 @@ GameObject:
   - component: {fileID: 987411263}
   - component: {fileID: 987411262}
   - component: {fileID: 987411264}
+  - component: {fileID: 987411265}
   - component: {fileID: 987411261}
   - component: {fileID: 987411266}
-  - component: {fileID: 987411265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1216,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 987411266}
         m_TargetAssemblyTypeName: GrabController, Assembly-CSharp
-        m_MethodName: OnDrop
+        m_MethodName: OnDroped
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1146,7 +1232,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 987411266}
         m_TargetAssemblyTypeName: GrabController, Assembly-CSharp
-        m_MethodName: OnPlace
+        m_MethodName: OnPlaced
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1176,87 +1262,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 330585546}
+  OnFoundInteractableChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _gizmosIsEnabled: 1
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   _interactionRange: 5
-  OnInteractableDiscovered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1135519246}
-        m_TargetAssemblyTypeName: InteractionUI, Assembly-CSharp
-        m_MethodName: OnInteractableDiscovered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 383190611}
-        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
-        m_MethodName: OnInteractableDiscovered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 937106327}
-        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
-        m_MethodName: OnInteractableDiscovered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnInteractableDiscarded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1135519246}
-        m_TargetAssemblyTypeName: InteractionUI, Assembly-CSharp
-        m_MethodName: OnInteractableDiscarded
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 383190611}
-        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
-        m_MethodName: OnInteractableDiscarded
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 937106327}
-        m_TargetAssemblyTypeName: CubeInteractable, Assembly-CSharp
-        m_MethodName: OnInteractableDiscarded
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &987411262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,17 +1364,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 330585546}
-  _grabPoint: {fileID: 2029294502}
+  _grabTransform: {fileID: 2029294502}
+  OnFoundGrabbableChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _useFreePlacement: 1
   _gizmosIsEnabled: 1
   _gizmosColor: {r: 0, g: 1, b: 0, a: 1}
   _interactionRange: 5
-  _dropRange: 2
-  OnInteractableDiscovered:
-    m_PersistentCalls:
-      m_Calls: []
-  OnInteractableDiscarded:
-    m_PersistentCalls:
-      m_Calls: []
+  _dropDistance: 2
+  _maskLayer:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &999804425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1483,7 @@ GameObject:
   - component: {fileID: 1463010313}
   - component: {fileID: 1463010316}
   - component: {fileID: 1463010315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1558,8 +1570,8 @@ GameObject:
   - component: {fileID: 1647562615}
   - component: {fileID: 1647562614}
   - component: {fileID: 1647562613}
-  - component: {fileID: 1647562612}
   - component: {fileID: 1647562617}
+  - component: {fileID: 1647562612}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -1581,6 +1593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1647562617}
   _renderer: {fileID: 1647562614}
+  _gameObject: {fileID: 678533601}
 --- !u!65 &1647562613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1745,7 +1758,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1831,7 +1844,7 @@ GameObject:
   - component: {fileID: 1994935020}
   - component: {fileID: 1994935023}
   - component: {fileID: 1994935022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1915,13 +1928,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029294502}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2029294502
 Transform:
   m_ObjectHideFlags: 0
@@ -1931,7 +1944,7 @@ Transform:
   m_GameObject: {fileID: 2029294501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 1.224, z: 1.07}
+  m_LocalPosition: {x: 0.535, y: 0.492, z: 0.317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1954,3 +1967,4 @@ SceneRoots:
   - {fileID: 11576545}
   - {fileID: 1647562616}
   - {fileID: 1703312160}
+  - {fileID: 678533602}

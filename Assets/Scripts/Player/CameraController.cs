@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     private void Awake() {
         
         // TODO (SAVIZ): Here you can perform a check and see if 'IsOwner()' is true or not and only deactivate the current visual model.
-        _visualModel.SetActive(false);
+        //_visualModel.SetActive(false);
     }
 
     private void LateUpdate() {

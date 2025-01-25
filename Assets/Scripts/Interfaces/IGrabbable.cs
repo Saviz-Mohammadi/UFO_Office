@@ -8,6 +8,11 @@ public interface IGrabbable {
     public bool IsGrabbed { get; set; }
     
     /// <summary>
+    /// This property helps in determining if item is currently placed inside of a placeable location or not and to change that.
+    /// </summary>
+    public IPlaceableLocation placeableLocationParent { get; set; }
+    
+    /// <summary>
     /// This method is used to obtain the 'Transform' of the object. Required for manipulating the location and parent-child relationship of the object for creating 'IGrabbable' behaviour.
     /// </summary>
     /// <returns>Transform</returns>
@@ -25,5 +30,9 @@ public interface IGrabbable {
     /// <returns>Renderer</returns>
     public Renderer GetRenderer();
 
+    /// <summary>
+    /// This method is used to obtain the ghost representation object of the grabbable. Usually, this is a wire frame to give the player a hint as to where the item will be placed.
+    /// </summary>
+    /// <returns>GameObject</returns>
     public GameObject GetGhost();
 }

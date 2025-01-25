@@ -9,15 +9,11 @@ public class InteractionController : MonoBehaviour {
     [Header("Dependencies")]
     [Tooltip("The selected 'Transform' placed in this field will be used as origin detection point.")]
     [SerializeField] private Transform _transform = null;
-    
-    
-    // Used to store the most recent interactable object:
-    private IInteractable _foundInteractable = null;
-    
 
-    public IInteractable FoundInteractable => _foundInteractable;
-
-
+    [Header("Events")]
+    [Space(10)]
+    public UnityEvent<InteractionController> OnFoundInteractableChanged;
+    
     [Header("Fields (Customizable)")]
     [Tooltip("Controls the 'Enabled' state of the Gizmos.")]
     [SerializeField] private bool _gizmosIsEnabled = true;
@@ -28,76 +24,67 @@ public class InteractionController : MonoBehaviour {
     [Space(10)]
     [Tooltip("Controls the range within which the player can detect and interact with an interactable object. (Also used for drawing the Gizmos)")]
     [SerializeField] private float _interactionRange = 5.0f;
-
     
+    private IInteractable _foundInteractable = null;
     
-    [Space(10)]
-    // Event is fired when this script discovers an interactable object: 
-    public UnityEvent<InteractionController> OnInteractableDiscovered;
+    private IInteractable _interactedInteractable = null;
     
-    // Event is fired when the last interactable object was either replaced with a new one or just lost:
-    public UnityEvent<InteractionController> OnInteractableDiscarded;
-    
-    
+    private bool _keyIsDownInteraction = false;
     
     private void Update() {
+        RaycastHit? raycastHit = TryObtainHit();
         
-        // Continuously scan the environment for new interactable objects:
-        _foundInteractable = ObtainInteractableObject();
-        
-        // Invoke Unity events and allow other components to know what happened:
-        if (_foundInteractable != null) {
-            
-            OnInteractableDiscovered?.Invoke(this);
-        }
+        _foundInteractable = TryObtainInteractable(raycastHit);
 
-        else {
-            OnInteractableDiscarded?.Invoke(this);
+        OnFoundInteractableChanged.Invoke(this);
+        
+        bool canInteract = _foundInteractable != null && _keyIsDownInteraction;
+        
+        if (canInteract) {
+            _interactedInteractable = _foundInteractable;
+            _interactedInteractable.Interact(gameObject);
         }
     }
     
     private void OnDrawGizmos() {
-
         if (!_gizmosIsEnabled) {
             return;
         }
-        
+
         Gizmos.color = _gizmosColor;
-        
         Gizmos.DrawRay(_transform.position, _transform.forward * _interactionRange);
     }
     
-    // Called on 'Interacted' Unity-Event of 'Player Input' component:
+    // Invoked by 'PlayerInput':
     public void OnInteracted(InputAction.CallbackContext context) {
-
-        if (context.performed) {
-         
-            if (_foundInteractable != null) {
-            
-                _foundInteractable.Interact(gameObject);
-            }
-        }
+        _keyIsDownInteraction = context.ReadValueAsButton();
     }
     
-    public IInteractable GetInteractable() {
-     
+    public IInteractable GetFoundInteractable() {
         return (_foundInteractable);
     }
     
-    private IInteractable ObtainInteractableObject() {
-        
-        bool success = Physics.Raycast(_transform.position, _transform.forward, out RaycastHit hit, _interactionRange);
+    private RaycastHit? TryObtainHit() {
+        bool success = Physics.Raycast(this._transform.position, this._transform.forward, out RaycastHit hit, this._interactionRange);
 
         if (!success) {
             return (null);
         }
-        
-        hit.collider.TryGetComponent(out IInteractable interactable);
-            
+
+        return (hit);
+    }
+
+    private IInteractable TryObtainInteractable(RaycastHit? hit) {
+        if (!hit.HasValue) {
+            return (null);
+        }
+
+        hit.Value.collider.TryGetComponent(out IInteractable interactable);
+
         if (interactable == null) {
             return (null);
         }
-            
+
         return (interactable);
     }
 }

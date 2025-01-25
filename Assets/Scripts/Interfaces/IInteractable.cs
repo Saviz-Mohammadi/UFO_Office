@@ -1,19 +1,21 @@
 using UnityEngine;
 
 public interface IInteractable {
-
-    // To enable the 'Interact()' method to access anything it may need from the interactor.
+    /// <summary>
+    /// This method is used to react to the 'OnFoundInteractableChanged' event of the 'InteractionController'. Usually, used to just to provide visual hints to the player. 
+    /// </summary>
+    /// <param name="interactionController"></param>
+    public void OnFoundInteractableChanged(InteractionController interactionController);
+    
+    /// <summary>
+    /// This method enables the interaction process.
+    /// </summary>
+    /// <param name="interactorObject"></param>
     public void Interact(GameObject interactorObject);
     
-    // A Standard interaction message. A simple nice touch.
-    public string ObtainInteractionText();
-    
-    // This enables a change in the interactable object when it is discovered.
-    public void OnDiscovered();
-
-    // This enables a change in the interactable object when it is discarded.
-    public void OnDiscarded();
-    
-    // This enables us to access anything we need from the interactable object:
-    public GameObject ObtainGameObject();
+    /// <summary>
+    /// This method enables the retrieval of a text interaction string.
+    /// </summary>
+    /// <returns>string</returns>
+    public string GetInteractionText();
 }

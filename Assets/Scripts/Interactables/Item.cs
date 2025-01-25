@@ -9,8 +9,13 @@ public class Item : MonoBehaviour, IGrabbable {
     
     [Tooltip("The 'Renderer' component of the item. Used for rendering a ghost replicate.")]
     [SerializeField] private Renderer _renderer;
+    
+    [Tooltip("The 'GameObject' component of the item. Used for displaying a ghost replicate.")]
+    [SerializeField] private GameObject _gameObject;
 
     public bool IsGrabbed { get; set; }
+    
+    public IPlaceableLocation placeableLocationParent { get; set; }
 
     public Transform GetTransform() {
         return (this.transform);
@@ -25,6 +30,6 @@ public class Item : MonoBehaviour, IGrabbable {
     }
 
     public GameObject GetGhost() {
-        throw new System.NotImplementedException();
+        return (this._gameObject);
     }
 }
