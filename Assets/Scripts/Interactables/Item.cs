@@ -13,6 +13,8 @@ public class Item : MonoBehaviour, IGrabbable {
     [Tooltip("The 'GameObject' component of the item. Used for displaying a ghost replicate.")]
     [SerializeField] private GameObject _gameObject;
 
+    [SerializeField] private Collider _collider;
+    
     public bool IsGrabbed { get; set; }
     
     public IPlaceableLocation placeableLocationParent { get; set; }
@@ -23,6 +25,10 @@ public class Item : MonoBehaviour, IGrabbable {
 
     public Rigidbody GetRigidbody() {
         return (this._rigidbody);
+    }
+
+    public Collider GetCollider() {
+        return (_collider);
     }
 
     public Renderer GetRenderer() {

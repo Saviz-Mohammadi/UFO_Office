@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using UnityEngine.Serialization;
 using Color = UnityEngine.Color;
 
 // NOTE: In this game, I am using free placement. If you want to create pre-determined placement, then you could create an interface type of 'IContainer' and check against it to see if item can be placed there. It can have things such as: 'CanContain()', 'IsEmpty()', etc.
+// Here is a nice tutorial that is the most like to my implementation: https://www.youtube.com/watch?v=CYk1mEcvhqQ
 
 public class GrabController : MonoBehaviour {
     [Header("Dependencies")]
@@ -192,7 +194,9 @@ public class GrabController : MonoBehaviour {
     }
     
     private void Grab(IGrabbable grabbable) {
-        grabbable.GetRigidbody().isKinematic = true;
+        //grabbable.GetRigidbody().isKinematic = true;
+        grabbable.GetCollider().enabled = false;
+        
         
         grabbable.GetTransform().SetParent(this._grabTransform);
         grabbable.GetTransform().localPosition = Vector3.zero;
@@ -216,7 +220,8 @@ public class GrabController : MonoBehaviour {
         grabbable.GetTransform().SetParent(null);
         grabbable.GetRigidbody().MovePosition(this.transform.position + this.transform.forward * this._dropDistance);
         grabbable.GetTransform().localRotation = Quaternion.identity;
-        grabbable.GetRigidbody().isKinematic = false;
+        //grabbable.GetRigidbody().isKinematic = false;
+        grabbable.GetCollider().enabled = true;
         
         grabbable.IsGrabbed = false;
         grabbable.GetGhost().SetActive(false);
@@ -232,8 +237,18 @@ public class GrabController : MonoBehaviour {
         }
         
         grabbable.GetTransform().SetParent(null);
-        grabbable.GetTransform().SetPositionAndRotation(hit.Value.point + (hit.Value.normal * CalculateBoundsOffset(grabbable.GetRenderer())), rotation);
-        grabbable.GetRigidbody().isKinematic = false;
+        
+        // Maybe I am dumb or something, but for some reason this works and nothing else. I am not sure what the problme is. All the logic seems to work correctly, except for moving and positionng. Some really strange things happen when I attempt to move
+        // My guess is that when moving the rigidbody and collider of the item somehow interact with the player, causing wierd stuff happen.
+        grabbable.GetRigidbody().MovePosition(hit.Value.point + hit.Value.normal * CalculateBoundsOffset(grabbable.GetRenderer()));
+        grabbable.GetTransform().localRotation = rotation;
+        //grabbable.GetTransform().SetPositionAndRotation(, rotation);
+        //grabbable.GetRigidbody().isKinematic = false;
+        
+        grabbable.GetCollider().enabled = true;
+        //Physics.IgnoreCollision(grabbable.GetCollider(), this.GetComponent<Collider>(), true);
+
+        //RestoreCollision(grabbable);
         
         grabbable.IsGrabbed = false;
         this._grabbedGrabbable = null;

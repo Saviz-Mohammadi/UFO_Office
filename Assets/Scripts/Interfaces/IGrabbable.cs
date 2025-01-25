@@ -24,6 +24,8 @@ public interface IGrabbable {
     /// <returns>Rigidbody</returns>
     public Rigidbody GetRigidbody();
     
+    public Collider GetCollider();
+    
     /// <summary>
     /// This method is used to obtain the 'Renderer' of the object. Every 'IGrabbable' object is required to have and return a 'Renderer' for visualizing the ghost replicant of the object when attempting to place it somewhere.
     /// </summary>
