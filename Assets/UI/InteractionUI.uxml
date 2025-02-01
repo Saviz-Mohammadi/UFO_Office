@@ -1,6 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1; justify-content: flex-end; align-content: center; padding-bottom: 15%;">
-        <ui:Label text="The message will be displayed here" name="InteractionLabel" triple-click-selects-line="false" double-click-selects-word="false" display-tooltip-when-elided="false" style="-unity-text-align: upper-center; font-size: 32px;" />
-        <ui:Label text="(E)" name="InteractionButton" double-click-selects-word="false" triple-click-selects-line="false" display-tooltip-when-elided="false" style="-unity-text-align: upper-center; font-size: 32px;" />
+        <ui:Label name="InteractionLabel" triple-click-selects-line="false" double-click-selects-word="false" display-tooltip-when-elided="false" text="MESSAGE GOES HERE" selectable="false" style="-unity-text-align: upper-center; font-size: 32px; color: rgb(255, 255, 255); -unity-font-style: bold;" />
     </ui:VisualElement>
 </ui:UXML>

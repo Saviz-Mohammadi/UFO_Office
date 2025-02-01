@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CubeInteractable : MonoBehaviour, IInteractable {
     [Header("Dependencies")]
@@ -11,6 +13,10 @@ public class CubeInteractable : MonoBehaviour, IInteractable {
     [Tooltip("The selected 'Material' placed in this field will be used as discarded indication. (Usually, the same as original material of the object)")]
     [SerializeField] private Material _materialDiscarded;
 
+    private void Awake() {
+        TaskManager.Instance.AddTask("The cube", this);
+    }
+
     public void OnFoundInteractableChanged(InteractionController interactionController) {
         IInteractable interactable = interactionController.GetFoundInteractable();
 
@@ -21,13 +27,21 @@ public class CubeInteractable : MonoBehaviour, IInteractable {
         
         HideHint();
     }
-    
+
+    public UnityEvent OnInteracted { get; }
+
     public void Interact(GameObject interactorObject) {
         Debug.Log("You interacted with me: " + gameObject.name);
+        
+        OnInteracted?.Invoke();
     }
-    
+
+    public void SetLocatorState(bool state) {
+        // Display a flashing pink arrow that rotates above the interactebl.
+    }
+
     public string GetInteractionText() {
-        return ("My name is: " + gameObject.name);
+        return ("PRESS 'E' TO INTERACT WITH " + gameObject.name);
     }
 
     private void ShowHint() {

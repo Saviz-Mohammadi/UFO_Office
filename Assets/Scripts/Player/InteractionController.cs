@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InteractionController : MonoBehaviour {
-    
     [Header("Dependencies")]
     [Tooltip("The selected 'Transform' placed in this field will be used as origin detection point.")]
     [SerializeField] private Transform _transform = null;
