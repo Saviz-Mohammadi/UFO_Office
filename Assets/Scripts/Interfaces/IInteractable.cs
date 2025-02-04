@@ -3,6 +3,11 @@ using UnityEngine.Events;
 
 public interface IInteractable {
     /// <summary>
+    /// This property enables or disables interaction capability.
+    /// </summary>
+    public bool CanInteract { get; set; }
+    
+    /// <summary>
     /// This method is used to react to the 'OnFoundInteractableChanged' event of the 'InteractionController'. Usually, used to just to provide visual hints to the player. 
     /// </summary>
     /// <param name="interactionController"></param>
