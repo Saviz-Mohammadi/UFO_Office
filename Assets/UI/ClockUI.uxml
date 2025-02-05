@@ -1,0 +1,3 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Label text="5" name="Label_Clock" style="-unity-font-style: bold; font-size: 64px; -unity-text-align: middle-center; color: rgb(255, 255, 255); bottom: 10%; align-self: flex-start; justify-content: center; align-content: center; top: 0;" />
+</engine:UXML>

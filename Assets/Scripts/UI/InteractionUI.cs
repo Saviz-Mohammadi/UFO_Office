@@ -7,9 +7,7 @@ public class InteractionUI : MonoBehaviour {
     [Tooltip("Required for interacting with UI elements.")]
     [SerializeField] private UIDocument _uiDocument = null;
     
-    [Header("Fields (Read-only)")]
-    [Tooltip("Represents the 'Label' element responsible for displaying the interaction message.")]
-    [SerializeField] private Label _labelInteractionMessage = null;
+    private Label _labelInteractionMessage = null;
 
     
     private void OnEnable() {

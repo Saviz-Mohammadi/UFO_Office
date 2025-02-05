@@ -54,6 +54,10 @@ public class CharacterController : MonoBehaviour {
     private bool _isJumping = false;
     
     private void Update() {
+        if (!GameManager.Instance.IsPlaying()) {
+            return;
+        }
+        
         RotatePlayer();
         RotateHead();
         PerformHorizontalMovement();
