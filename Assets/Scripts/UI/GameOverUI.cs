@@ -12,8 +12,6 @@ public class GameOverUI : MonoBehaviour {
     private void Awake() {
         _labelInteractionMessage = _uiDocument.rootVisualElement.Q<Label>("Label_GameOver");
         
-        _labelInteractionMessage.text = "5";
-        
         HideUI();
     }
 

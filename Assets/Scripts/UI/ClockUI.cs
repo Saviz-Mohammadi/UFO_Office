@@ -16,9 +16,9 @@ public class ClockUI : MonoBehaviour {
         HideUI();
     }
 
-    private void Start() {
-        _labelInteractionMessage.text = ConvertToTimeString(GameManager.Instance.GetPlayTimeMax());
-    }
+    // private void Start() {
+    //     _labelInteractionMessage.text = ConvertToTimeString(GameManager.Instance.GetPlayTimeMax());
+    // }
 
     private void Update() {
         if (!GameManager.Instance.IsPlaying()) {
@@ -27,14 +27,12 @@ public class ClockUI : MonoBehaviour {
         }
         
         ShowUI();
-        _labelInteractionMessage.text = ConvertToTimeString(GameManager.Instance.GetPlayTime());
+        var (h, m, s) = GameManager.Instance.GetTickTime();
+        _labelInteractionMessage.text = ConvertToTimeString(h, m, s);
     }
 
-    private string ConvertToTimeString(float time) {
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time % 60);
-        
-        return ($"{minutes:D2}:{seconds:D2}");
+    private string ConvertToTimeString(int hours, int minutes, int seconds) {
+        return ($"{hours:D2}:{minutes:D2}:{seconds:D2}");
     }
     
     private void ShowUI() {

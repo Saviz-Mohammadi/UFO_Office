@@ -13,8 +13,6 @@ public class CountDownUI : MonoBehaviour {
     private void Awake() {
         _labelInteractionMessage = _uiDocument.rootVisualElement.Q<Label>("Label_CountDown");
         
-        _labelInteractionMessage.text = "5";
-        
         HideUI();
     }
 
@@ -26,9 +24,14 @@ public class CountDownUI : MonoBehaviour {
         }
         
         ShowUI();
-        _labelInteractionMessage.text = Mathf.Ceil(GameManager.Instance.GetCountDownTime()).ToString();
+        var (h, m, s) = GameManager.Instance.GetTickTime();
+        _labelInteractionMessage.text = ConvertToTimeString(h, m, s);
     }
 
+    private string ConvertToTimeString(int hours, int minutes, int seconds) {
+        return ($"{seconds}");
+    }
+    
     private void ShowUI() {
         _uiDocument.rootVisualElement.visible = true;
     }

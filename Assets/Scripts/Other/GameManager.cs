@@ -5,12 +5,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private CountdownTimer _countdownTimer;
+    
     public float audioVolume = 1.0f;
     public int graphicsQuality = 2; // 0 = Low, 1 = Medium, 2 = High
     public bool isPaused = false;
     public GameObject pauseMenuUI;
     public int targetFPS = 60; // Default FPS setting
-
+    
     private enum State {
         WaitingToStart,
         CountDown,
@@ -19,10 +21,15 @@ public class GameManager : MonoBehaviour
     }
     
     private State state = State.WaitingToStart;
+    
+    // These are options:
     private float waitTime = 1.0f;
     private float countDownTime = 5.0f;
-    private float playTimeMax = 10.0f;
-    private float playTime;
+    private float playTime = 10.0f;
+    
+    private int seconds = 0;
+    private int minutes = 0;
+    private int hours = 0;
     
     private void Awake()
     {
@@ -38,29 +45,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void Start() {
+        // Subscribe to event:
+        _countdownTimer.OnCountdownEnd += OnCountDownEnd;
+        _countdownTimer.OnTimeTicked += OnTimeTick;
+        
+        // Start with waitTime:
+        _countdownTimer.Initialize(0, 0, 1);
+        _countdownTimer.StartTimer();
+    }
+    
+    public void OnCountDownEnd() {
         switch (state) {
             case State.WaitingToStart:
-                waitTime -= Time.deltaTime;
-                if (waitTime < 0.0f) {
-                    state = State.CountDown;
-                }
+                _countdownTimer.StopTimer();
+                _countdownTimer.Initialize(0, 0, 5);
+                state = State.CountDown;
+                _countdownTimer.StartTimer();
                 break;
             case State.CountDown:
-                countDownTime -= Time.deltaTime;
-                if (countDownTime < 0.0f) {
-                    playTime = playTimeMax;
-                    state = State.Playing;
-                }
+                _countdownTimer.StopTimer();
+                _countdownTimer.Initialize(0, 2, 30);
+                state = State.Playing;
+                _countdownTimer.StartTimer();
                 break;
             case State.Playing:
-                playTime -= Time.deltaTime;
-                if (playTime < 0.0f) {
-                    playTime = Mathf.Max(playTime, 0); // Ensure it doesn't go negative
-                    state = State.Over;
-                }
+                state = State.Over;
                 break;
         }
+    }
+
+    public void OnTimeTick(int hour, int minute, int second) {
+        seconds = second;
+        minutes = minute;
+        hours = hour;
     }
 
     public bool IsPlaying() {
@@ -75,16 +93,8 @@ public class GameManager : MonoBehaviour
         return (state == State.Over);
     }
 
-    public float GetCountDownTime() {
-        return (countDownTime);
-    }
-
-    public float GetPlayTimeMax() {
-        return (playTimeMax);
-    }
-
-    public float GetPlayTime() {
-        return playTime;
+    public (int, int, int) GetTickTime() {
+        return (hours, minutes, seconds);
     }
     
     public void SetAudioVolume(float volume)
