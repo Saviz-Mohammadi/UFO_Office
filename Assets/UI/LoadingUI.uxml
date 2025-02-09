@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-start; align-content: auto; align-self: auto; align-items: flex-end; flex-direction: row;">
+        <ui:Label text="LOADING..." style="align-items: center; justify-content: center; font-size: 64px; -unity-font-style: bold; color: rgb(255, 255, 255); bottom: 5%; left: 5%;" />
+        <ui:ProgressBar value="0" name="ProgressBar_LoadStatus" high-value="1" style="flex-grow: 1; flex-shrink: 0; align-content: auto; justify-content: flex-start; align-items: stretch; align-self: auto; scale: 1 2; left: 30%; bottom: 7%; right: 5%; position: absolute;" />
+    </ui:VisualElement>
+</ui:UXML>

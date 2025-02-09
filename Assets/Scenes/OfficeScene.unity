@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 987411267}
   - component: {fileID: 987411261}
   - component: {fileID: 987411266}
+  - component: {fileID: 987411268}
   m_Layer: 3
   m_Name: Player Container
   m_TagString: Untagged
@@ -1502,6 +1503,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a7077c64-54b7-430f-9d0c-33f2a07f7e07
     m_ActionName: 'Player/Place[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 987411268}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
+        m_MethodName: OnPaused
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10bc3be1-0304-4762-aef1-a98e1c063532
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1636,6 +1653,18 @@ MonoBehaviour:
   _verticalRotationLimit: 85
   _positionSmoothTime: 0.125
   _rotationSmoothSpeed: 10
+--- !u!114 &987411268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987411255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdad95ba31ebf335c8213a389ff6faa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999804425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,6 +2005,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463010312}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1463584961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1463584963}
+  - component: {fileID: 1463584962}
+  - component: {fileID: 1463584964}
+  m_Layer: 5
+  m_Name: PauseMenuUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1463584962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463584961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 537fdac2ad384b1f188fa283fc222945, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 940ef85ae77269cf193e0d748e73e36e, type: 3}
+  m_SortingOrder: 1
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!4 &1463584963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463584961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463584964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463584961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c901f21510c9e9ea9972838802c9dd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 1463584962}
 --- !u!1 &1610563503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2440,6 @@ MonoBehaviour:
   audioVolume: 1
   graphicsQuality: 2
   isPaused: 0
-  pauseMenuUI: {fileID: 0}
   targetFPS: 60
 --- !u!114 &2111427495
 MonoBehaviour:
@@ -2369,6 +2462,7 @@ SceneRoots:
   - {fileID: 123077317}
   - {fileID: 903738805}
   - {fileID: 606747676}
+  - {fileID: 1463584963}
   - {fileID: 1610563505}
   - {fileID: 916384270}
   - {fileID: 143837509}

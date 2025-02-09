@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public float audioVolume = 1.0f;
     public int graphicsQuality = 2; // 0 = Low, 1 = Medium, 2 = High
     public bool isPaused = false;
-    public GameObject pauseMenuUI;
     public int targetFPS = 60; // Default FPS setting
     
     private enum State {
@@ -33,16 +32,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            //LoadSettings();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
     private void Start() {
@@ -64,6 +54,7 @@ public class GameManager : MonoBehaviour
                 _countdownTimer.StartTimer();
                 break;
             case State.CountDown:
+                SetCursorState(false, true);
                 _countdownTimer.StopTimer();
                 _countdownTimer.Initialize(0, 2, 30);
                 state = State.Playing;
@@ -128,8 +119,8 @@ public class GameManager : MonoBehaviour
     
     public void TogglePause()
     {
+        // NOTE (SAVIZ): In an offline context, it would make sense to set the Time.scaleFactor to 0, however, since this is a multiplayer game it would be wierd and not perferrable to do that.
         isPaused = !isPaused;
-        pauseMenuUI.SetActive(isPaused);
         // Automatically update cursor state based on pause state
         SetCursorState(isPaused, !isPaused);
     }
