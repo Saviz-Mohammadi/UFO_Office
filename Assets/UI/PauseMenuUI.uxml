@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1; justify-content: space-evenly; align-content: auto; align-self: auto; align-items: center; background-color: rgba(0, 0, 0, 0.39);">
         <ui:Button text="RESUME" name="Button_Resume" style="width: 450px; height: 150px; font-size: 64px; -unity-font-style: bold;" />
+        <ui:Button text="OPTIONS" name="Button_Options" style="width: 450px; height: 150px; font-size: 64px; -unity-font-style: bold;" />
         <ui:Button text="MAIN MENU" name="Button_LoadMainMenu" style="width: 450px; height: 150px; font-size: 64px; -unity-font-style: bold;" />
     </ui:VisualElement>
 </ui:UXML>

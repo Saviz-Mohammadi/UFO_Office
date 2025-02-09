@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; justify-content: space-evenly; align-content: auto; align-self: auto; align-items: center; background-color: rgba(0, 0, 0, 0.39);">
+        <ui:Slider label="MUSIC" value="0.35" high-value="1" name="Slider_Music" fill="true" focusable="false" style="width: 50%; font-size: 32px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+        <ui:Slider label="SFX" value="0.35" high-value="1" name="Slider_SFX" fill="true" focusable="false" style="width: 50%; font-size: 32px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+        <ui:Button text="BACK" name="Button_Back" style="width: 450px; height: 150px; font-size: 64px; -unity-font-style: bold;" />
+    </ui:VisualElement>
+</ui:UXML>
